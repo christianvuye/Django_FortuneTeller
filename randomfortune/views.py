@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render
 import random
 
@@ -14,8 +15,16 @@ fortuneList = [
     "Don’t just think, act!"
 ]
 
+nameList = [
+    "Christian",
+    "Pablo",
+    "Sebastian",
+    "Zishan"
+]
+
 
 def fortune(request):
     fortune = random.choice(fortuneList)
-    context = {"fortune": fortune}
+    name = random.choice(nameList)
+    context = {"fortune": fortune, "name": name}
     return render(request, "randomfortune/fortune.html", context)
